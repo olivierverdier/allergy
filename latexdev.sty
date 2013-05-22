@@ -1,0 +1,214 @@
+% ------------------------------------------------------------------------------
+% (C) 2012--2013 Olivier Verdier <olivier.verdier@gmail.com>
+% LaTeXDev Package
+% Development tools for LaTeX
+% ------------------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{latexdev}[2012/07/07]
+
+% Package for draft development in LaTeX
+% Typical usage during the writing process would be
+% \usepackage[watermark,showeqnr]{latexdev}
+% When the document is finished, use
+% \usepackage[final]{latexdev}
+
+\RequirePackage{etoolbox}
+
+% use this option to turn off all the developpment tools
+\newtoggle{final}
+\togglefalse{final}
+\DeclareOption{final}{\toggletrue{final}}
+
+% Show all equation numbers
+\newtoggle{showeqnr}
+\togglefalse{showeqnr}
+\DeclareOption{showeqnr}{\toggletrue{showeqnr}}
+
+% Activate biblatex
+\newtoggle{biblatex}
+\togglefalse{biblatex}
+\DeclareOption{biblatex}{\toggletrue{biblatex}}
+
+% Add draft watermarks on top of each page
+\newtoggle{watermark}
+\togglefalse{watermark}
+\DeclareOption{watermark}{\toggletrue{watermark}}
+
+% Force TeX4ht deactivation
+\newtoggle{notex4ht}
+\togglefalse{notex4ht}
+\DeclareOption{notex4ht}{\toggletrue{notex4ht}}
+
+% ------------------------------------------------------------------------------
+% Process Options
+% ------------------------------------------------------------------------------
+\ProcessOptions\relax
+
+% ------------------------------------------------------------------------------
+% Nag package
+% ------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+% ------------------------------------------------------------------------------
+% TeX4ht
+% ------------------------------------------------------------------------------
+% Unless told otherwise with the notex4ht option,
+% the package will load the tex4ht package if compiled with latex
+\RequirePackage{ifxetex,ifpdf}
+% Unless told otherwise...
+\iftoggle{notex4ht}{}{
+% ...activate tex4ht if compiled with latex:
+\ifboolexpr{ bool{pdf} or bool{xetex} }{}{% latex
+\RequirePackage[ht5mathjax, charset=utf-8, early_, early^]{tex4ht}
+\newcommand*\pgfsysdriver{pgfsys-tex4ht.def}
+}
+}
+
+% ------------------------------------------------------------------------------
+% Bibliography
+% ------------------------------------------------------------------------------
+
+\iftoggle{biblatex}{
+\RequirePackage[
+backref=true,
+isbn=true,
+url=true,
+firstinits=true,
+% backend=biber,
+maxnames=20,
+style=numeric,
+]%
+{biblatex}
+}{}
+% ------------------------------------------------------------------------------
+% ISO 8601 Date Format
+% ------------------------------------------------------------------------------
+
+\RequirePackage{datetime}
+\renewcommand{\dateseparator}{-}
+\yyyymmdddate
+
+% ------------------------------------------------------------------------------
+% Draft Watermark
+% ------------------------------------------------------------------------------
+\iftoggle{final}{}{%
+\iftoggle{watermark}{%
+\RequirePackage[top]{background}
+\SetBgContents{\textsf{Draft \today{} {\tiny\currenttime}}}
+\SetBgScale{2}
+% \SetBgVshift{1em} % otherwise too close to page border and vanishes when printing
+\SetBgOpacity{.5}
+}{}
+}
+
+% ------------------------------------------------------------------------------
+% Showkeys
+% ------------------------------------------------------------------------------
+
+
+%% \RequirePackage{refcheck}
+\RequirePackage[notref,notcite,
+\iftoggle{final}{final,}{}
+]{showkeys}
+\RequirePackage{rotating}
+\renewcommand\showkeyslabelformat[1]{% 
+%\rotatebox{-90}{\normalfont\footnotesize\ttfamily\textcolor{cyan}{#1}}
+\begin{turn}{-85}\normalfont\footnotesize\ttfamily\textcolor{cyan!20!white}{#1}\end{turn}%
+}
+
+% ------------------------------------------------------------------------------
+% Todos
+% ------------------------------------------------------------------------------
+
+\RequirePackage{xcolor}
+\setlength{\marginparwidth}{2cm}
+\RequirePackage[
+textsize=footnotesize,
+backgroundcolor=yellow!20!white,
+bordercolor=gray,
+linecolor=gray!20!white,
+\iftoggle{final}{disable,}{}
+]{todonotes}
+
+\newcommand*\itodo[2][]{\todo[inline, caption={}]{\ifstrempty{#1}{}{\textbf{#1:}~}#2}}
+
+% ------------------------------------------------------------------------------
+% Highlighting
+% ------------------------------------------------------------------------------
+% \RequirePackage{soul}
+
+
+% ------------------------------------------------------------------------------
+% Hyperref
+% ------------------------------------------------------------------------------
+
+
+\colorlet{linkcolour}{blue!50!black}
+\colorlet{urlcolour}{magenta}
+
+\RequirePackage[pdfusetitle]{hyperref}
+\hypersetup{
+colorlinks=true,
+linkcolor=linkcolour,
+citecolor=linkcolour,
+urlcolor=urlcolour,
+}
+
+% http://tex.stackexchange.com/a/82125/550
+% The package hyperref is not good enough for bookmarks, so:
+\RequirePackage{bookmark}
+
+
+% ------------------------------------------------------------------------------
+% Maths
+% ------------------------------------------------------------------------------
+
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{mathtools}
+\mathtoolsset{%
+showonlyrefs=\iftoggle{showeqnr}{false}{true},
+}
+\RequirePackage{breqn}
+
+% ------------------------------------------------------------------------------
+% Theorems
+% ------------------------------------------------------------------------------
+
+\RequirePackage{amsthm}
+
+% http://tex.stackexchange.com/a/82125/550
+\RequirePackage{xparse,aliascnt}
+\NewDocumentCommand{\xnewtheorem}{m o m}
+ {%
+  \IfNoValueTF{#2}
+  {\newtheorem{#1}{#3}[section]}
+   {%
+    \newaliascnt{#1}{#2}%
+    \newtheorem{#1}[#1]{#3}%
+    \aliascntresetthe{#1}%
+    \expandafter\newcommand\csname #1autorefname\endcsname{#3}%
+   }%
+ }
+
+ % ---- plain ----
+\theoremstyle{plain}
+\xnewtheorem{theorem}{Theorem}
+\xnewtheorem{lemma}[theorem]{Lemma}
+\xnewtheorem{corollary}[theorem]{Corollary}
+\xnewtheorem{proposition}[theorem]{Proposition}
+
+ % ---- definition ----
+\theoremstyle{definition}
+\xnewtheorem{definition}[theorem]{Definition}
+\xnewtheorem{example}[theorem]{Example}
+\xnewtheorem{remark}[theorem]{Remark}
+
+
+% ------------------------------------------------------------------------------
+% Section reference
+% ------------------------------------------------------------------------------
+\renewcommand*{\sectionautorefname}{\S\!}
+\renewcommand*{\subsectionautorefname}{\S\!}
+\renewcommand*{\subsubsectionautorefname}{\S\!}
+
+
