@@ -1,18 +1,18 @@
 LatexDev: Writing drafts in LaTeX
 =================================
 
-The LaTeX style file I use while writing anything in LaTeX.
+A LaTeX style file to write drafts (and final documents) in LaTeX.
 
-A typical use case is
+A typical use case while writing the draft is
 
 ```latex
-	\usepackage[watermark,showeqnr]{latexdev}
+	\usepackage[watermark, showeqnr, theoremdefs]{latexdev}
 ```
 
-When the document is finished, add the `final` option
+When the document is in final stage, add the `final` option
 
 ```latex
-	\usepackage[final]{latexdev}
+	\usepackage[final, watermark, showeqnr, theoremdefs]{latexdev}
 ```
 
 Here is a brief list of options with their meaning:
