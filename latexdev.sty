@@ -240,3 +240,15 @@ showonlyrefs=\iftoggle{showeqnr}{false}{true},
 \renewcommand*\subsubsectionautorefname{\S\!}
 
 
+% ------------------------------------------------------------------------------
+% Delimiters with mathtools
+% ------------------------------------------------------------------------------
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\paren{\lparen}{\rparen}
+\DeclarePairedDelimiter\bracket{\lbrack}{\rbrack}
+\DeclarePairedDelimiter\spangle{\langle}{\rangle}
+\DeclarePairedDelimiterX\pairing[2]{\langle}{\rangle}{#1,#2}
+\DeclarePairedDelimiterX\set[1]{\{}{\}}{\,#1\,}
+\DeclarePairedDelimiterX\setc[2]{\lbrace}{\rbrace}{\,#1 \;\delimsize\vert\; #2\,}
+
