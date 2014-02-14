@@ -252,3 +252,10 @@ showonlyrefs=\iftoggle{showeqnr}{false}{true},
 \DeclarePairedDelimiterX\set[1]{\{}{\}}{\,#1\,}
 \DeclarePairedDelimiterX\setc[2]{\lbrace}{\rbrace}{\,#1 \;\delimsize\vert\; #2\,}
 
+
+% ------------------------------------------------------------------------------
+% Commuting diagrams
+% ------------------------------------------------------------------------------
+\usetikzlibrary{matrix}
+\tikzstyle{commdiag}=[matrix of math nodes, row sep=3em, column sep=2.5em, text height=1.5ex, text depth=0.25ex,ampersand replacement=\&]
+\tikzset{>=stealth}
