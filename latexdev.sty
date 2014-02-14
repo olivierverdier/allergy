@@ -123,28 +123,30 @@ placement=top,
 % ------------------------------------------------------------------------------
 % Showkeys
 % ------------------------------------------------------------------------------
-
-
-%% \RequirePackage{refcheck}
+\newcommand*\showkeyscolour{Gainsboro}
+\newcommand*\showkeysangle{-80}
+% ------------------------------------------------------------------------------
 \RequirePackage[notref,notcite,
 \iftoggle{final}{final,}{}
 ]{showkeys}
 \RequirePackage{rotating}
 \renewcommand\showkeyslabelformat[1]{% 
-%\rotatebox{-90}{\normalfont\footnotesize\ttfamily\textcolor{cyan}{#1}}
-\begin{turn}{-85}\normalfont\footnotesize\ttfamily\textcolor{cyan!20!white}{#1}\end{turn}%
+\begin{turn}{\showkeysangle}\normalfont\footnotesize\ttfamily\textcolor{\showkeyscolour}{#1}\end{turn}%
 }
 
 % ------------------------------------------------------------------------------
 % Todos
 % ------------------------------------------------------------------------------
+\newcommand*\mytodocolour{LemonChiffon}
+% ------------------------------------------------------------------------------
 
 \setlength{\marginparwidth}{2cm}
 \RequirePackage[
 textsize=footnotesize,
-backgroundcolor=yellow!20!white,
+backgroundcolor=\mytodocolour,
 bordercolor=gray,
 linecolor=gray!20!white,
+colorinlistoftodos=true,
 \iftoggle{final}{disable,}{}
 ]{todonotes}
 
