@@ -45,6 +45,11 @@
 \togglefalse{notex4ht}
 \DeclareOption{notex4ht}{\toggletrue{notex4ht}}
 
+% Declare theorem environments
+\newtoggle{theoremdefs}
+\togglefalse{theoremdefs}
+\DeclareOption{theoremdefs}{\toggletrue{theoremdefs}}
+
 % ------------------------------------------------------------------------------
 % Process Options
 % ------------------------------------------------------------------------------
@@ -185,6 +190,8 @@ showonlyrefs=\iftoggle{showeqnr}{false}{true},
 % Theorems
 % ------------------------------------------------------------------------------
 
+\iftoggle{theoremdefs}{
+
 \RequirePackage{amsthm}
 
 % http://tex.stackexchange.com/a/82125/550
@@ -214,6 +221,7 @@ showonlyrefs=\iftoggle{showeqnr}{false}{true},
 \xnewtheorem{example}[theorem]{Example}
 \xnewtheorem{remark}[theorem]{Remark}
 
+}{}
 
 % ------------------------------------------------------------------------------
 % Section reference
