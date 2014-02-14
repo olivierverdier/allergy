@@ -19,6 +19,7 @@
 \RequirePackage{etex}
 
 \RequirePackage{etoolbox}
+\RequirePackage[log-declarations=false]{xparse}
 
 % use this option to turn off all the developpment tools
 \newtoggle{final}
@@ -195,7 +196,7 @@ showonlyrefs=\iftoggle{showeqnr}{false}{true},
 \RequirePackage{amsthm}
 
 % http://tex.stackexchange.com/a/82125/550
-\RequirePackage{xparse,aliascnt}
+\RequirePackage{aliascnt}
 \NewDocumentCommand{\xnewtheorem}{m o m}
  {%
   \IfNoValueTF{#2}
