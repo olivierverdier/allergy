@@ -102,15 +102,17 @@ style=numeric,
 % ------------------------------------------------------------------------------
 % Draft Watermark
 % ------------------------------------------------------------------------------
-\iftoggle{final}{}{%
 \iftoggle{watermark}{%
-\RequirePackage[top]{background}
-\SetBgContents{\textsf{Draft \today{} {\tiny\currenttime}}}
+\RequirePackage{background}
+\backgroundsetup{
+contents={\textsf{Draft \today{} {\tiny\currenttime}}},
+placement=top,
+}
+
 \SetBgScale{2}
 % \SetBgVshift{1em} % otherwise too close to page border and vanishes when printing
 \SetBgOpacity{.5}
 }{}
-}
 
 % ------------------------------------------------------------------------------
 % Showkeys
