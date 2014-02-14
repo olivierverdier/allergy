@@ -155,7 +155,9 @@ colorinlistoftodos=true,
 \iftoggle{final}{disable,}{}
 ]{todonotes}
 
-\newcommand*\itodo[2][]{\todo[inline, caption={}]{\ifstrempty{#1}{}{\textbf{#1:}~}#2}}
+\NewDocumentCommand\itodo{oO{}m}{\todo[inline, #2]{\IfValueTF{#1}{\textbf{#1:}~}{}#3}}
+
+
 
 % ------------------------------------------------------------------------------
 % Highlighting
