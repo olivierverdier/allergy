@@ -23,3 +23,4 @@ Here is a brief list of options with their meaning:
 * `watermark`: Add a watermark with a timestamp
 * `theoremdefs`: Add standard theorem definitions
 
+See [my blog post about LaTeX](http://www.olivierverdier.com/posts/2013/07/15/modern-latex/) for more details, and tips on how to use LaTeX at its best.
