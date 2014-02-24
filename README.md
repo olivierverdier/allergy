@@ -27,6 +27,9 @@ The following holds
 Sensible theorem, lemma and definition environments are already defined.
 \end{theorem}
 
+Some extra math delimiter commands are defined such as \(\abs{x}\), \(\norm{x}\), or \(\pairing{\omega}{X}\).
+Sets can be defined as \(S \coloneqq \set{1,2,\ldots}\), or by comprehension as \(S' \coloneqq \setc{i \in S}{i \leq 10}\).
+
 There is also a nice watermark on the top of every page (compile several times).
 
 \itodo[Me]{Here is an inline todo of some urgent issue to address}
