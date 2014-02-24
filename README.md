@@ -13,7 +13,7 @@ A typical use case at *draft stage* is
 \begin{document}
 Here is an equation without reference, but nevertheless numbered with the \texttt{showeqnr} option on:
 \begin{align}
-x = 3
+f \colon A \to B
 \end{align}
 
 Here is a labeled equation, with label visible in the margin:
