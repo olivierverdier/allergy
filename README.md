@@ -30,6 +30,8 @@ Sensible theorem, lemma and definition environments are already defined.
 There is also a nice watermark on the top of every page (compile several times).
 
 \itodo[Me]{Here is an inline todo of some urgent issue to address}
+
+\itodo*[Me]{Another, less urgent task, with the starred version of the \texttt{itodo} command.}
 ```
 
 When the document is in *review stage*, add the `final` option, and remove the `watermark` option:

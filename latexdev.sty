@@ -156,7 +156,10 @@ colorinlistoftodos=true,
 \iftoggle{final}{disable,}{}
 ]{todonotes}
 
-\NewDocumentCommand\itodo{oO{}m}{\todo[inline, #2]{\IfValueTF{#1}{\textbf{#1:}~}{}#3}}
+\NewDocumentCommand\itodo{soO{}m}{%
+\makeatletter%
+{\IfBooleanTF{#1}{\renewcommand\@todonotes@backgroundcolor{Honeydew}}{}\todo[inline, #3]{\IfValueTF{#2}{\textbf{#2:}~}{}#4}}%
+\makeatother}
 
 
 
