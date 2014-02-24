@@ -1,9 +1,9 @@
 LatexDev: Writing drafts in LaTeX
 =================================
 
-A LaTeX style file to write drafts (and final documents) in LaTeX.
+I always find myself loading the same basic packages over and over again in all my notes and articles.  Over the years, the loaded packages have stabilised into what is now `latexdev.sty`.  It can be used with different options at the three production stages of any document, the *drafting*, *review* and *publication* stages.
 
-A typical use case at *draft stage* is
+A typical use case at **draft stage** is
 
 ```latex
 \documentclass{scrartcl}
@@ -37,13 +37,13 @@ There is also a nice watermark on the top of every page (compile several times).
 \itodo*[Me]{Another, less urgent task, with the starred version of the \texttt{itodo} command.}
 ```
 
-When the document is in *review stage*, add the `final` option, and remove the `watermark` option:
+When the document is in **review stage**, add the `final` option, and remove the `watermark` option:
 
 ```latex
 \usepackage[final, showeqnr, theoremdefs]{latexdev}
 ```
 
-At *publication stage*, you may want to remove `showeqnr` so that only referred equations are numbered, as is customary in most journals:
+At **publication stage**, you may want to remove `showeqnr` so that only referred equations are numbered, as is customary in most journals:
 ```latex
 \usepackage[final, theoremdefs]{latexdev}
 ```
