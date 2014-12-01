@@ -51,6 +51,11 @@
 \togglefalse{theoremdefs}
 \DeclareOption{theoremdefs}{\toggletrue{theoremdefs}}
 
+% Deactivate microtype
+\newtoggle{nomicrotype}
+\togglefalse{nomicrotype}
+\DeclareOption{nomicrotype}{\toggletrue{nomicrotype}}
+
 % ------------------------------------------------------------------------------
 % Process Options
 % ------------------------------------------------------------------------------
@@ -262,3 +267,11 @@ showonlyrefs=\iftoggle{showeqnr}{false}{true},
 \usetikzlibrary{matrix}
 \tikzstyle{commdiag}=[matrix of math nodes, row sep=3em, column sep=2.5em, text height=1.5ex, text depth=0.25ex,ampersand replacement=\&]
 \tikzset{>=stealth}
+
+% ------------------------------------------------------------------------------
+% Microtype
+% ------------------------------------------------------------------------------
+
+\iftoggle{nomicrotype}{}{%
+\RequirePackage{microtype}
+}
