@@ -213,7 +213,7 @@ showonlyrefs=\iftoggle{showeqnr}{false}{true},
 
 % http://tex.stackexchange.com/a/82125/550
 \RequirePackage{aliascnt}
-\NewDocumentCommand{\xnewtheorem}{m o m}
+\NewDocumentCommand\xnewtheorem{m o m}
  {%
   \IfNoValueTF{#2}
   {\newtheorem{#1}{#3}[section]}
