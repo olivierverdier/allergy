@@ -1,14 +1,14 @@
-LatexDev: Writing drafts in LaTeX
+Allergy: Writing drafts in LaTeX
 =================================
 
-I always find myself loading the same basic packages over and over again in all my notes and articles.  Over the years, the loaded packages have stabilised into what is now `latexdev.sty`.  It can be used with different options at the three production stages of any document, the *drafting*, *review* and *publication* stages.
+I always find myself loading the same basic packages over and over again in all my notes and articles.  Over the years, the loaded packages have stabilised into what is now `allergy.sty`.  It can be used with different options at the three production stages of any document, the *drafting*, *review* and *publication* stages.
 
 A typical use case at **draft stage** is
 
 ```latex
 \documentclass{scrartcl}
 
-\usepackage[watermark, showeqnr, theoremdefs]{latexdev}
+\usepackage[watermark, showeqnr, theoremdefs]{allergy}
 
 \begin{document}
 Here is an equation without reference, but nevertheless numbered with the \texttt{showeqnr} option on:
@@ -40,12 +40,12 @@ There is also a nice watermark on the top of every page (compile several times).
 When the document is in **review stage**, add the `final` option, and remove the `watermark` option:
 
 ```latex
-\usepackage[final, showeqnr, theoremdefs]{latexdev}
+\usepackage[final, showeqnr, theoremdefs]{allergy}
 ```
 
 At **publication stage**, you may want to remove `showeqnr` so that only referred equations are numbered, as is customary in most journals:
 ```latex
-\usepackage[final, theoremdefs]{latexdev}
+\usepackage[final, theoremdefs]{allergy}
 ```
 
 Here is a brief list of options with their meaning:
