@@ -1,0 +1,102 @@
+\documentclass{scrartcl}
+
+\usepackage[%
+watermark, % date and time of the draft as watermark
+showeqnr, % shows all equation numbers
+theoremdefs, % standard theorems and definitions
+% final, % activate this option when the document is ready
+]{allergy}
+
+\title{Allergy: a \LaTeX{} metapackage}
+\author{Olivier Verdier}
+
+\begin{document}
+
+\maketitle
+
+I always find myself loading the same basic packages over and over again in all my notes and articles.
+Over the years, the loaded packages have stabilised into what is now \verb|allergy.sty|.
+
+It can be used with different options at the three production stages of any document, the \emph{drafting}, \emph{review} and \emph{publication} stages.
+
+\begin{enumerate}
+  \item
+A typical use case at \textbf{draft stage} is as follows:
+Load the \verb|allergy| package as
+\begin{verbatim}
+\usepackage[%
+watermark, % date and time of the draft as watermark
+showeqnr, % shows all equation numbers
+theoremdefs, % standard theorems and definitions
+% final, % activate this option when the document is ready
+]{allergy}
+\end{verbatim}
+\item
+At the \textbf{review stage}, you can drop the \verb|watermark| and add the \verb|final| option.
+\item
+At the \textbf{publication stage}, you can remove the \verb|showeqnr| option, to display only referenced equation numbers.
+\end{enumerate}
+
+\section{References}
+\label{sec:references}
+
+Here is an equation without reference, but nevertheless numbered with the \texttt{showeqnr} option on:
+\begin{align}
+f \colon A \to B
+\end{align}
+
+Here is a labeled equation, with label visible in the margin:
+\begin{align}
+\label{eq:important}
+2 + 2 = 4
+\end{align}
+
+Note how the equation and section labels are printed in the margin.
+
+\section{Theorems}
+
+The following holds
+\begin{theorem}
+Sensible theorem, lemma and definition environments are already defined.
+\end{theorem}
+
+\section{Delimiters}
+
+Some extra math delimiter commands are defined.
+They accept an optional size argument (\verb|\big|, \verb|\Big|, etc.), or a star for automatic size adjustment.
+For example, for \verb|\paren|, compare the following:
+\begin{itemize}
+\item \verb|\paren{\sqrt{x}+1}^2| \(\paren{\sqrt{x}+1}^2\)
+\item \verb|\paren[\big]{\sqrt{x}+1}^2| \(\paren[\big]{\sqrt{x}+1}^2\)
+\item \verb|\paren*{\sqrt{x}+1}^2| \(\paren*{\sqrt{x}+1}^2\)
+\end{itemize}
+
+The list of delimiters is:
+
+\begin{itemize}
+\item Parenthesis \verb|\paren|: \(\paren[\big]{\sqrt{x} + 1}^2\)
+  \item Brackets \verb|\bracket|: \(\bracket[\big]{\frac{a}{2}+b}\)
+\item Curly brace \verb|\cbrace| (but use \verb|\set| for sets): \(\cbrace{a+b}\)
+\item Absolute value \verb|\abs|: \(\abs{x}\)
+\item Norm \verb|\norm|: \(\norm{x}\)
+\item Dual pairing, \verb|\pairing|: \(\pairing{\omega}{X}\)
+  \item \verb|\spangle|: \(\spangle{E}\)
+\item \verb|\scalprod|: \(\scalprod{\vec{u}}{\vec{v}}\)
+\item Sets, \verb|\set|: \(S \coloneqq \set{1,2,\ldots}\)
+  \item Set comprehension \verb|\setc|: \(S' \coloneqq \setc{i \in S}{i \leq 10}\).
+\end{itemize}
+
+\section{Watermark}
+
+There is also a nice watermark on the top of every page (compile several times).
+
+\section{Todos}
+
+\itodo[Me]{Here is an inline todo of some urgent issue to address}
+
+\itodo*[Me]{Another, less urgent task, with the starred version of the \texttt{itodo} command.}
+
+\section{Compatibility Options}
+
+There are two extra options, \verb|noetex| and \verb|nomicrotype| which can be used along with classes which do not work well with those packages.
+\end{document}
