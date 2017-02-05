@@ -1,0 +1,20 @@
+This is a meta-package containing standard packages that can be included in almost every LaTeX document with some mathematics inside.
+
+A list of these packages is
+
+* hyperref
+* xcolor
+* amsmath, amssymb amsthm
+* tikz
+* mathtools
+
+In draft mode, the following are also loaded:
+* todonotes
+* showkeys
+
+Some extra useful packages are:
+* datetime
+* watermark (optional)
+* biblatex (optional)
+
+Moreover, these packages are loaded with sensible defaults.
