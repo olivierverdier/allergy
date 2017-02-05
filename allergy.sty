@@ -16,7 +16,6 @@
 %		\usepackage[final]{allergy}
 %
 
-\RequirePackage{etex}
 
 \RequirePackage{etoolbox}
 \RequirePackage[log-declarations=false]{xparse}
@@ -56,10 +55,22 @@
 \togglefalse{nomicrotype}
 \DeclareOption{nomicrotype}{\toggletrue{nomicrotype}}
 
+% Deactivate etex
+\newtoggle{noetex}
+\togglefalse{noetex}
+\DeclareOption{noetex}{\toggletrue{noetex}}
+
 % ---------------------------------------------------------------
 % Process Options
 % ---------------------------------------------------------------
 \ProcessOptions\relax
+
+% ---------------------------------------------------------------
+% Etex Package
+% ---------------------------------------------------------------
+\iftoggle{noetex}{}{%
+\RequirePackage{etex}
+}
 
 % ---------------------------------------------------------------
 % Nag package
