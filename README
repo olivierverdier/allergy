@@ -7,6 +7,8 @@ A list of these packages is
 * amsmath, amssymb amsthm
 * tikz
 * mathtools
+* etoolbox
+* xparse
 
 In draft mode, the following are also loaded:
 * todonotes
