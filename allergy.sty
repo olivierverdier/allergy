@@ -218,8 +218,6 @@ showonlyrefs=\iftoggle{showeqnr}{false}{true},
 % Theorems
 % ---------------------------------------------------------------
 
-\iftoggle{theoremdefs}{
-
 \RequirePackage{amsthm}
 
 % http://tex.stackexchange.com/a/82125/550
@@ -232,13 +230,16 @@ showonlyrefs=\iftoggle{showeqnr}{false}{true},
     \newaliascnt{#1}{#2}%
     \newtheorem{#1}[#1]{#3}%
     \aliascntresetthe{#1}%
-    \expandafter\newcommand\csname #1autorefname\endcsname{#3}%
    }%
+    \expandafter\newcommand\csname #1autorefname\endcsname{#3}%
  }
+
+\iftoggle{theoremdefs}{
+
 
  % ---- plain ----
 \theoremstyle{plain}
-\xnewtheorem{theorem}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
 \xnewtheorem{lemma}[theorem]{Lemma}
 \xnewtheorem{corollary}[theorem]{Corollary}
 \xnewtheorem{proposition}[theorem]{Proposition}
