@@ -289,3 +289,9 @@ showonlyrefs=\iftoggle{showeqnr}{false}{true},
 \iftoggle{nomicrotype}{}{%
 \RequirePackage{microtype}
 }
+
+% ---------------------------------------------------------------
+% Email link
+% ---------------------------------------------------------------
+
+\newcommand*\emaillink[1]{\htmladdnormallink{\texttt{#1}}{mailto:#1}}
