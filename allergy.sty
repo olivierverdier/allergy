@@ -168,9 +168,11 @@ colorinlistoftodos=true,
 \iftoggle{final}{disable,}{}
 ]{todonotes}
 
+\newcounter{todocounter}
+
 \NewDocumentCommand\itodo{soO{}m}{% chktex 20
 \makeatletter%
-{\IfBooleanT{#1}{\renewcommand\@todonotes@backgroundcolor{Lavender}}\todo[inline, #3]{\IfValueT{#2}{\IfBlankF{#2}{\textbf{#2:}~}}#4}}%
+{\IfBooleanT{#1}{\renewcommand\@todonotes@backgroundcolor{Lavender}}\stepcounter{todocounter}\todo[inline, #3]{\IfBooleanF{#1}{\textcolor{SteelBlue}{\raisebox{.3ex}{\tiny\thetodocounter}} }\IfValueT{#2}{\IfBlankF{#2}{\textbf{#2:}~}}#4}}%
 \makeatother}
 
 
