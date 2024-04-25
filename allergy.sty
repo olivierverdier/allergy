@@ -127,6 +127,11 @@ defernumbers=true,
 % Draft Watermark
 % ---------------------------------------------------------------
 \iftoggle{watermark}{%
+  % -- from https://stackoverflow.com/a/64938265/262667
+  % necessary until the `background` package stops using the `everypage` package
+  \RequirePackage{silence}
+  \WarningsOff[everypage]
+  %--
 \RequirePackage{background}
 \backgroundsetup{
 contents={\textsf{Draft \today{} {\tiny\currenttime}}},
