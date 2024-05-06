@@ -286,6 +286,12 @@ showonlyrefs=\iftoggle{showeqnr}{false}{true},
 \iftoggle{nomicrotype}{}{%
 \RequirePackage{microtype}
 }
+% ---------------------------------------------------------------
+% Enumitem
+% ---------------------------------------------------------------
+\RequirePackage{enumitem}
+\newlist{romanenumerate}{enumerate}{1}
+\setlist[romanenumerate]{label=(\roman*),font=\upshape}
 
 % ---------------------------------------------------------------
 % Email link
