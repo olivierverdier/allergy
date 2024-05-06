@@ -7,6 +7,15 @@ theoremdefs, % standard theorems and definitions
 % final, % activate this option when the document is ready
 ]{allergy}
 
+\usepackage{listings}
+\lstset
+{
+    language={[LaTeX]TeX},
+    basicstyle=\ttfamily,
+    columns=flexible,
+}
+
+
 \title{Allergy: a \LaTeX{} metapackage}
 \author{Olivier Verdier}
 
@@ -15,32 +24,32 @@ theoremdefs, % standard theorems and definitions
 \maketitle
 
 I always find myself loading the same basic packages over and over again in all my notes and articles.
-Over the years, the loaded packages have stabilised into what is now \verb|allergy.sty|.
+Over the years, the loaded packages have stabilised into what is now \texttt{allergy.sty}.
 
 It can be used with different options at the three production stages of any document, the \emph{drafting}, \emph{review} and \emph{publication} stages.
 
 \begin{enumerate}
   \item
 A typical use case at \textbf{draft stage} is as follows:
-Load the \verb|allergy| package as
-\begin{verbatim}
+Load the \texttt{allergy} package as
+\begin{lstlisting}
 \usepackage[%
 watermark, % date and time of the draft as watermark
 showeqnr, % shows all equation numbers
 theoremdefs, % standard theorems and definitions
 % final, % activate this option when the document is ready
 ]{allergy}
-\end{verbatim}
+\end{lstlisting}
 \item
-At the \textbf{review stage}, you can drop the \verb|watermark| and add the \verb|final| option.
+At the \textbf{review stage}, you can drop the \lstinline|watermark| and add the \lstinline|final| option.
 \item
-At the \textbf{publication stage}, you can remove the \verb|showeqnr| option, to display only referenced equation numbers.
+At the \textbf{publication stage}, you can remove the \lstinline|showeqnr| option, to display only referenced equation numbers.
 \end{enumerate}
 
 \section{References}
 \label{sec:references}
 
-Here is an equation without reference, but nevertheless numbered with the \texttt{showeqnr} option on:
+Here is an equation without reference, but nevertheless numbered with the \lstinline|showeqnr| option on:
 \begin{align}
 f \colon A \to B
 \end{align}
@@ -63,27 +72,27 @@ Sensible theorem, lemma and definition environments are already defined.
 \section{Delimiters}
 
 Some extra math delimiter commands are defined.
-They accept an optional size argument (\verb|\big|, \verb|\Big|, etc.), or a star for automatic size adjustment.
-For example, for \verb|\paren|, compare the following:
+They accept an optional size argument (\lstinline|\big|, \lstinline|\Big|, etc.), or a star for automatic size adjustment.
+For example, for \lstinline|\paren|, compare the following:
 \begin{itemize}
-\item \verb|\paren{\sqrt{x}+1}^2| \(\paren{\sqrt{x}+1}^2\)
-\item \verb|\paren[\big]{\sqrt{x}+1}^2| \(\paren[\big]{\sqrt{x}+1}^2\)
-\item \verb|\paren*{\sqrt{x}+1}^2| \(\paren*{\sqrt{x}+1}^2\)
+\item \lstinline|\paren{\sqrt{x}+1}^2| \(\paren{\sqrt{x}+1}^2\)
+\item \lstinline|\paren[\big]{\sqrt{x}+1}^2| \(\paren[\big]{\sqrt{x}+1}^2\)
+\item \lstinline|\paren*{\sqrt{x}+1}^2| \(\paren*{\sqrt{x}+1}^2\)
 \end{itemize}
 
 The list of delimiters is:
 
 \begin{itemize}
-\item Parenthesis \verb|\paren|: \(\paren[\big]{\sqrt{x} + 1}^2\)
-  \item Brackets \verb|\bracket|: \(\bracket[\big]{\frac{a}{2}+b}\)
-\item Curly brace \verb|\cbrace| (but use \verb|\set| for sets): \(\cbrace{a+b}\)
-\item Absolute value \verb|\abs|: \(\abs{x}\)
-\item Norm \verb|\norm|: \(\norm{x}\)
-\item Dual pairing, \verb|\pairing|: \(\pairing{\omega}{X}\)
-  \item \verb|\spangle|: \(\spangle{E}\)
-\item \verb|\scalprod|: \(\scalprod{\vec{u}}{\vec{v}}\)
-\item Sets, \verb|\set|: \(S \coloneqq \set{1,2,\dotsc}\)
-  \item Set comprehension \verb|\setc|: \(S' \coloneqq \setc{i \in S}{i \leq 10}\).
+\item Parenthesis \lstinline|\paren|: \(\paren[\big]{\sqrt{x} + 1}^2\)
+  \item Brackets \lstinline|\bracket|: \(\bracket[\big]{\frac{a}{2}+b}\)
+\item Curly brace \lstinline|\cbrace| (but use \lstinline|\set| for sets): \(\cbrace{a+b}\)
+\item Absolute value \lstinline|\abs|: \(\abs{x}\)
+\item Norm \lstinline|\norm|: \(\norm{x}\)
+\item Dual pairing, \lstinline|\pairing|: \(\pairing{\omega}{X}\)
+  \item \lstinline|\spangle|: \(\spangle{E}\)
+\item \lstinline|\scalprod|: \(\scalprod{\vec{u}}{\vec{v}}\)
+\item Sets, \lstinline|\set|: \(S \coloneqq \set{1,2,\dotsc}\)
+  \item Set comprehension \lstinline|\setc|: \(S' \coloneqq \setc{i \in S}{i \leq 10}\).
 \end{itemize}
 
 \section{Watermark}
@@ -98,7 +107,7 @@ There is also a nice watermark on the top of every page (compile several times).
 
 \section{Compatibility Options}
 
-There are two extra options, \verb|noetex| and \verb|nomicrotype| which can be used along with classes which do not work well with those packages.
+There are two extra options, \lstinline|noetex| and \lstinline|nomicrotype| which can be used along with classes which do not work well with those packages.
 
 \section{Package List}
 
